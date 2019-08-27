@@ -1,7 +1,5 @@
 import scrapy
-from scrapy.selector import Selector
 from ..items import *
-from ..services import *
 
 
 class GenericSpider(scrapy.Spider):
