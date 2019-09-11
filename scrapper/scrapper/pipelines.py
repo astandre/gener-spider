@@ -29,6 +29,6 @@ class GenericPipeline(object):
         print("Saving item", item["subject"])
         session = load_session()
         session.add(Triple(subject=item["subject"], predicate=item["predicate"], object=item["object"],
-                           time_date=datetime.datetime.now()))
+                           source=item["source"]))
         session.commit()
         return item

@@ -12,3 +12,4 @@ class TripleItem(scrapy.Item):
     subject = scrapy.Field()
     predicate = scrapy.Field()
     object = scrapy.Field()
+    source = scrapy.Field()

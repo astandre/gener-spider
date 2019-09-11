@@ -5,8 +5,6 @@ from ..items import *
 class GenericSpider(scrapy.Spider):
     name = "feedbooks"
 
-    subject = "open suny textbooks"
-
     def start_requests(self):
         urls = [
             "http://es.feedbooks.com/books/top?category=FBFIC029000&lang=en"
@@ -47,7 +45,7 @@ class GenericSpider(scrapy.Spider):
         resp = response.xpath("//body").get()
         if resp is not None:
             # print(resp)
-            yield TripleItem(subject=self.subject, predicate="hasRaw", object=resp)
+            yield TripleItem(subject=self.name, predicate="hasRaw", object=resp, source=response.url)
 
     def parse_list(self, response):
         resp = response.xpath("//h3/a/@href").getall()
