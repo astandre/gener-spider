@@ -21,14 +21,14 @@ class GenericSpider(scrapy.Spider):
 
         resp = response.xpath("//div[@class='col-md-9']").get()
         if resp is not None:
-            yield TripleItem(subject=self.subject, predicate="hasRaw", object=resp)
+            yield TripleItem(subject=self.name, predicate="hasRaw", object=resp, source=response.url)
             # self.carry_rule = None
 
     def parse(self, response):
 
         resp = response.xpath("//h4/a/@href").getall()
         if resp is not None:
-            for next_page in resp:
+            for next_page in resp:  
                 if next_page is not None:
                     yield response.follow(next_page, self.parse_follow)
         pages = response.xpath("//section[@class='p-3']/p/a/@href").getall()

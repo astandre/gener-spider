@@ -49,7 +49,7 @@ class GenericSpider(scrapy.Spider):
 
         resp = response.xpath("//div[@id='maincontent']").get()
         if resp is not None:
-            yield TripleItem(subject=self.subject, predicate="hasRaw", object=resp)
+            yield TripleItem(subject=self.name, predicate="hasRaw", object=resp, source=response.url)
 
     def parse(self, response):
         resp = response.xpath("//a[contains(text(),'READ MORE')]/@href").getall()
