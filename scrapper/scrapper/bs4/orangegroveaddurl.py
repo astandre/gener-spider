@@ -88,7 +88,7 @@ for x in subjectRow:
             url_tb = a.get('href')
             name_tb = a.get_text().strip()
             url_tb = '{0}{1}'.format(domain, url_tb[1:])
-            print(f'{name_tb} - {url_tb}')
+            #print(f'{name_tb} - {url_tb}')
             if x[1] == 'InTech':
                 rta = confirmTitle(name_tb)
                 if rta[0]:
@@ -116,5 +116,4 @@ for x in subjectRow:
                     rawsOfCategory.remove(r)
                     break
         print('\t\tIterate {0} / {1}'.format(i+1,numIterate))
-    break
     print('END CAT')
